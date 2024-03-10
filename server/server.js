@@ -3,6 +3,7 @@ const { ApolloServer } = require('@apollo/server');
 const { expressMiddleWare } = require('@apollo/server/express4');
 const path = require('path');
 const db = require('./config/connection');
+const { typeDefs, resolvers } = require('./schemas');
 
 
 const app = express();
