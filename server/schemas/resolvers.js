@@ -1,13 +1,13 @@
 // import user model
 const { User } = require('../models');
 // import sign token function from auth
-const { signToken } = require('../utils/auth');
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   // get a single user by either their id or their username
   Query: {
     user: async (parent, { userId }) => {
-        return User.findOne({ _id: userId })
+        return User.findOne({ _id: userId });
     }
   },
 
