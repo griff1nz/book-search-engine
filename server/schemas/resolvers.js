@@ -34,19 +34,19 @@ const resolvers = {
         return { token, user };
     },
     // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
-    saveBook: async(parent, {user, book}) => {
+    saveBook: async(parent, {info}) => {
         return User.findOneAndUpdate({ _id: user._id },
             {
-                $addToSet: {savedBooks: book},
+                $addToSet: {savedBooks: info},
             },
             {
                 new: true,
                 runValidators: true,
             });
     },
-    removeBook: async(parent, { user, book }) => {
+    removeBook: async(parent, { bookId }) => {
         return User.findOneAndUpdate({_id: user._id},
-            { $pull: { savedBooks: { savedBooks: book }}}, {new: true});
+            { $pull: { savedBooks: { _id: bookId }}}, {new: true});
     }
   }
   
