@@ -31,3 +31,11 @@ export const SAVE_BOOK = gql`
             savedBooks
         }
     }`;
+
+export const REMOVE_BOOK = gql`
+    mutation removeBook($bookId: bookId) {
+        removeBook(bookId: $bookId) {
+            username
+            savedBooks
+        }
+    }`;
