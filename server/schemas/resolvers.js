@@ -51,9 +51,9 @@ const resolvers = {
                 runValidators: true,
             });
     },
-    removeBook: async(parent, { bookId }) => {
-        return User.findOneAndUpdate({_id: user._id},
-            { $pull: { savedBooks: { _id: bookId }}}, {new: true});
+    removeBook: async(parent, { bookId }, context) => {
+        return User.findOneAndUpdate({_id: context.user._id},
+            { $pull: { savedBooks: { bookId: bookId }}}, {new: true});
     }
   }
   
