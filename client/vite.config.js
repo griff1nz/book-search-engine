@@ -9,7 +9,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/graphql': {
-        target: 'https://book-search-engine-i11s.onrender.com/',
+        target: 'https://book-search-engine-i11s.onrender.com',
         changeOrigin: true,
         secure: false,
       }
