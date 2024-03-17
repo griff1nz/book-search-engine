@@ -23,12 +23,16 @@ export const LOGIN_USER = gql`
     }`;
 
 export const SAVE_BOOK = gql`
-    mutation saveBook($info: BookInfo) {
-        saveBook(info: $info)
+    mutation saveBook($bookInfo: BookInfo!) {
+        saveBook(info: $bookInfo)
         {
             _id
             username
-            savedBooks
+            savedBooks {
+                bookId
+                title
+                authors
+            }
         }
     }`;
 
