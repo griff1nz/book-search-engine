@@ -11,6 +11,7 @@ const { typeDefs, resolvers } = require('./schemas');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(cors());
 const server = new ApolloServer({
   typeDefs, resolvers, context: authMiddleware
 });
@@ -25,7 +26,7 @@ const startApolloServer = async () => {
     context: authMiddleware
   }));
   if (process.env.NODE_ENV === 'production') {
-    app.use(cors());
+    app.use(express.static(path.join(__dirname, '../client/dist')));
 
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
