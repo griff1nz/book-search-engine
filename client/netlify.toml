@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/graphql/*"
+to = "https://book-search-engine-i11s.onrender.com/graphql/:splat"
+status = 200
+force = true
