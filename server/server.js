@@ -4,6 +4,8 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const { authMiddleware } = require('./utils/auth');
 const path = require('path');
 const db = require('./config/connection');
+const cors = require('cors');
+
 const { typeDefs, resolvers } = require('./schemas');
 
 
@@ -23,7 +25,7 @@ const startApolloServer = async () => {
     context: authMiddleware
   }));
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist')));
+    app.use(cors());
 
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
